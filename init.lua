@@ -37,6 +37,13 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
 
+  use {
+  'kyazdani42/nvim-tree.lua',
+  requires = {
+    'kyazdani42/nvim-web-devicons', -- optional, for file icons
+  },
+  tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}
   use 'kyazdani42/nvim-web-devicons'
 
   if is_bootstrap then
@@ -67,4 +74,5 @@ require("telescope_rc")
 require("treesitter_rc")
 require("lsp_rc")
 require("cmp_rc")
-
+require("floatterm_rc")
+require("nvim_tree_rc")

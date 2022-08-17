@@ -16,10 +16,7 @@ vim.keymap.set('n', '<C-a>', 'gg<S-v>G')
 
 --keymap.set('n', '<leader>uu', ':UndotreeToggle<CR>')
 
--- floaterm
---keymap.set('n', '<leader>t', ':FloatermToggle<CR>')
--- keymap.set('t', '<leader>t', ':<C-\\><C-n>FloatermToggle<CR>')
---
+
 
 -- Move line or block of lines up/down
 vim.keymap.set('n', 'J', ':m .+1<CR>==')

@@ -4,6 +4,15 @@
 -- Set highlight on search
 vim.o.hlsearch = true
 
+vim.scriptencoding = 'utf-8'
+vim.opt.encoding = 'utf-8'
+vim.opt.fileencoding = 'utf-8'
+
+vim.opt.title = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
+vim.opt.wildignore:append { '*/node_modules/*' }
 -- Make line numbers default
 vim.wo.number = true
 
