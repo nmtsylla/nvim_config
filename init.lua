@@ -9,25 +9,26 @@ end
 --
 -- -- -- stylua: ignore start
 require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'                                                    -- Package manager
-  use 'tpope/vim-fugitive'                                                        -- Git commands in nvim
-  use 'tpope/vim-rhubarb'                                                         -- Fugitive-companion to interact with github
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }       -- Add git related info in the signs columns and popups
-  use 'numToStr/Comment.nvim'                                                     -- "gc" to comment visual regions/lines
-  use 'nvim-treesitter/nvim-treesitter'                                           -- Highlight, edit, and navigate code
-  use 'nvim-treesitter/nvim-treesitter-textobjects'                               -- Additional textobjects for treesitter
+  use 'lewis6991/impatient.nvim'
+  use 'wbthomason/packer.nvim' -- Package manager
+  use 'tpope/vim-fugitive' -- Git commands in nvim
+  use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
+  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Add git related info in the signs columns and popups
+  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
+  use 'nvim-treesitter/nvim-treesitter' -- Highlight, edit, and navigate code
+  use 'nvim-treesitter/nvim-treesitter-textobjects' -- Additional textobjects for treesitter
   use 'nvim-treesitter/nvim-treesitter-refactor'
-  use 'neovim/nvim-lspconfig'                                                     -- Collection of configurations for built-in LSP client
-  use 'williamboman/nvim-lsp-installer'                                           -- Automatically install language servers to stdpath
-  use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } }               -- Autocompletion
-  use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } }           -- Snippet Engine and Snippet Expansion
-  use 'mjlbach/onedark.nvim'                                                      -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim'                                                 -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim'                                       -- Add indentation guides even on blank lines
-  use 'tpope/vim-sleuth'                                                          -- Detect tabstop and shiftwidth automatically
+  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use 'williamboman/nvim-lsp-installer' -- Automatically install language servers to stdpath
+  use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } } -- Autocompletion
+  use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } } -- Snippet Engine and Snippet Expansion
+  use 'mjlbach/onedark.nvim' -- Theme inspired by Atom
+  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+  use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Fuzzy Finder (files, lsp, etc)
 
-   -- undo history
+  -- undo history
   use 'mbbill/undotree'
 
   use 'voldikss/vim-floaterm'
@@ -38,13 +39,23 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
 
   use {
-  'kyazdani42/nvim-tree.lua',
-  requires = {
-    'kyazdani42/nvim-web-devicons', -- optional, for file icons
-  },
-  tag = 'nightly' -- optional, updated every week. (see issue #1193)
-}
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
   use 'kyazdani42/nvim-web-devicons'
+  use { 'mhartington/formatter.nvim' }
+  use { 'jose-elias-alvarez/null-ls.nvim' }
+
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" }
+    }
+  }
 
   if is_bootstrap then
     require('packer').sync()
@@ -52,6 +63,7 @@ require('packer').startup(function(use)
 end)
 -- -- stylua: ignore end
 
+require('impatient')
 require("base")
 
 --
@@ -76,3 +88,7 @@ require("lsp_rc")
 require("cmp_rc")
 require("floatterm_rc")
 require("nvim_tree_rc")
+require("luasnip_rc")
+require("formatter_rc")
+require("null_ls_rc")
+require("refactoring_rc")
