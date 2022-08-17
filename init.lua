@@ -20,7 +20,11 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-refactor'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'williamboman/nvim-lsp-installer' -- Automatically install language servers to stdpath
-  use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } } -- Autocompletion
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/cmp-path' }
+  use { 'hrsh7th/cmp-cmdline' }
+  use { 'hrsh7th/nvim-cmp' }
   use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } } -- Snippet Engine and Snippet Expansion
   use 'mjlbach/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
@@ -48,6 +52,7 @@ require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use { 'mhartington/formatter.nvim' }
   use { 'jose-elias-alvarez/null-ls.nvim' }
+  use { "j-hui/fidget.nvim" }
 
   use {
     "ThePrimeagen/refactoring.nvim",
