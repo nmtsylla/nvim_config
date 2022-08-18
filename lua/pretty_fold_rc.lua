@@ -18,4 +18,4 @@ require('pretty-fold').setup {
     { '%[', ']' }, -- % to escape lua pattern char
   },
 }
--- require('fold-preview').setup()
+require('fold-preview').setup()
