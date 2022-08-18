@@ -53,6 +53,8 @@ require('packer').startup(function(use)
   use { 'mhartington/formatter.nvim' }
   use { 'jose-elias-alvarez/null-ls.nvim' }
   use { "j-hui/fidget.nvim" }
+  use { 'windwp/nvim-autopairs' }
+  use {'windwp/nvim-ts-autotag'}
 
   use {
     "ThePrimeagen/refactoring.nvim",
@@ -61,6 +63,8 @@ require('packer').startup(function(use)
       { "nvim-treesitter/nvim-treesitter" }
     }
   }
+
+  use { 'RRethy/vim-illuminate' }
 
   if is_bootstrap then
     require('packer').sync()
@@ -97,3 +101,6 @@ require("luasnip_rc")
 require("formatter_rc")
 require("null_ls_rc")
 require("refactoring_rc")
+require("bufdelete_rc")
+require("autopairs_rc")
+require("autotag_rc")

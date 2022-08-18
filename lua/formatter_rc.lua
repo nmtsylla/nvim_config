@@ -38,55 +38,55 @@ require("formatter").setup {
       end
     },
     typescriptreact = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      typescript = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      javascript = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      javascriptreact = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
-      json = {
-        -- prettier
-        function()
-          return {
-            exe = "prettier",
-            args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0)},
-            stdin = true
-          }
-        end
-      },
+      -- prettier
+      function()
+        return {
+          exe = "prettier",
+          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          stdin = true
+        }
+      end
+    },
+    typescript = {
+      -- prettier
+      function()
+        return {
+          exe = "prettier",
+          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          stdin = true
+        }
+      end
+    },
+    javascript = {
+      -- prettier
+      function()
+        return {
+          exe = "prettier",
+          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          stdin = true
+        }
+      end
+    },
+    javascriptreact = {
+      -- prettier
+      function()
+        return {
+          exe = "prettier",
+          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          stdin = true
+        }
+      end
+    },
+    json = {
+      -- prettier
+      function()
+        return {
+          exe = "prettier",
+          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          stdin = true
+        }
+      end
+    },
 
 
     -- Use the special "*" filetype for defining formatter configurations on
@@ -98,3 +98,6 @@ require("formatter").setup {
     }
   }
 }
+
+-- Format file before saving
+vim.keymap.set('n', '<c-s>', ':Format<cr> <cmd>w!<cr>')
