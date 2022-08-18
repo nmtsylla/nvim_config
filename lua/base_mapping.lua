@@ -12,9 +12,9 @@ vim.keymap.set('n', 'dw', 'vb"_d')
 vim.keymap.set('n', '<C-a>', 'gg<S-v>G')
 
 -- Yanks history
---keymap.set('n', '<C-y>', '<Plug>(Yanks)')
+vim.keymap.set('n', '<C-y>', '<Plug>(Yanks)')
 
---keymap.set('n', '<leader>uu', ':UndotreeToggle<CR>')
+vim.keymap.set('n', '<leader>uu', ':UndotreeToggle<CR>')
 
 
 

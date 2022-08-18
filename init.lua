@@ -7,6 +7,23 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 --
+require("packer").init {
+  profile = {
+    enable = true,
+    threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+  },
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "rounded" })
+    end,
+    prompt_border = "single"
+  },
+  max_jobs = 50,
+  git = { clone_timeout = 600, },
+  auto_clean = true,
+  ensure_dependencies = true,
+}
+
 -- -- -- stylua: ignore start
 require('packer').startup(function(use)
   use 'lewis6991/impatient.nvim'
@@ -55,7 +72,7 @@ require('packer').startup(function(use)
   use { "j-hui/fidget.nvim" }
   use { 'windwp/nvim-autopairs' }
   use { 'windwp/nvim-ts-autotag' }
-
+  use { 'dense-analysis/ale' }
   use {
     "ThePrimeagen/refactoring.nvim",
     requires = {
@@ -63,9 +80,16 @@ require('packer').startup(function(use)
       { "nvim-treesitter/nvim-treesitter" }
     }
   }
-
+  use { 'akinsho/bufferline.nvim' }
   use { 'RRethy/vim-illuminate' }
-  use {'rcarriga/nvim-notify'}
+  use { 'rcarriga/nvim-notify' }
+  use { 'hrsh7th/vim-vsnip' }
+  use { 'tpope/vim-rails' }
+  use {'tpope/vim-endwise'}
+  use {'MaxMEllon/vim-jsx-pretty'}
+  use {'neoclide/vim-jsx-improve'}
+  use  { "NickyTope/yanks.nvim" }
+
 
   if is_bootstrap then
     require('packer').sync()
@@ -105,4 +129,4 @@ require("null_ls_rc")
 require("bufdelete_rc")
 require("autopairs_rc")
 require("autotag_rc")
-require("notify_rc")
+require("bufferline_rc")
