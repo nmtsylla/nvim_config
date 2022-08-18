@@ -1,5 +1,7 @@
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+--#region
+
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'lua', 'typescript', 'rust', 'go', 'python' },
@@ -59,5 +61,11 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
-
-
+require('ufo').setup({
+  provider_selector = function(bufnr, filetype, buftype)
+    return { 'treesitter', 'indent' }
+  end
+})
+local opt = vim.opt
+opt.foldlevel = 99
+opt.foldlevelstart = -1

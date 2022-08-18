@@ -4,7 +4,6 @@ local map = require('nvim-tree.config').nvim_tree_callback
 if not status_ok then
   return
 end
-
 nvim_tree.setup {
 
   open_on_setup = true,
@@ -15,7 +14,7 @@ nvim_tree.setup {
     enable = true,
     update_cwd = true,
   },
-  hijack_cursor = true,
+  -- hijack_cursor = true,
   view = {
     --    auto_resize = true,
     mappings = {
@@ -42,6 +41,7 @@ nvim_tree.setup {
   },
   renderer = {
     root_folder_modifier = ":t",
+    group_empty = true,
     icons = {
       glyphs = {
         default = "",
@@ -68,6 +68,9 @@ nvim_tree.setup {
       },
     },
   },
+  filters = {
+    dotfiles = true,
+  },
   diagnostics = {
     enable = true,
     show_on_dirs = true,
@@ -81,6 +84,7 @@ nvim_tree.setup {
 }
 
 -- Toggle nvim tree
-vim.keymap.set('n', '<leader>/', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
--- Navigate through windows 
+vim.keymap.set('n', '<leader>/', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+-- Navigate through windows
+vim.keymap.set('n', '<Space>', '<C-w>w')
 vim.keymap.set('n', '<Space>', '<C-w>w')

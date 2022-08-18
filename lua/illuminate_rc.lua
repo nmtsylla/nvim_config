@@ -1,2 +1,41 @@
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
-vim.api.nvim_set_keymap('n', '<leader>m', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
+local M = {}
+
+
+M.highlight = true
+
+function M.toggle()
+  M.highlight = not M.highlight
+  if M.highlight then
+    vim.notify.info("Enabled document highlight", "Document Highlight")
+  else
+    vim.notify.warn("Disabled document highlight", "Document Highlight")
+  end
+end
+
+function M.highlight(client)
+  if M.highlight then
+    if client.resolved_capabilities.document_highlight then
+      local present, illuminate = pcall(require, "illuminate")
+      if present then
+        illuminate.on_attach(client)
+      else
+        vim.api.nvim_exec(
+          [[
+            augroup lsp_document_highlight
+              autocmd! * <buffer>
+              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+          ]],
+          false
+        )
+      end
+    end
+  end
+end
+
+function M.setup(client)
+  M.highlight(client)
+end
+
+return M

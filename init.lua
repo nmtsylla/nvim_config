@@ -72,7 +72,7 @@ require('packer').startup(function(use)
   use { "j-hui/fidget.nvim" }
   use { 'windwp/nvim-autopairs' }
   use { 'windwp/nvim-ts-autotag' }
-  use { 'dense-analysis/ale' }
+  use { 'kaicataldo/material.vim' }
   use {
     "ThePrimeagen/refactoring.nvim",
     requires = {
@@ -85,12 +85,28 @@ require('packer').startup(function(use)
   use { 'rcarriga/nvim-notify' }
   use { 'hrsh7th/vim-vsnip' }
   use { 'tpope/vim-rails' }
-  use {'tpope/vim-endwise'}
-  use {'MaxMEllon/vim-jsx-pretty'}
-  use {'neoclide/vim-jsx-improve'}
-  use  { "NickyTope/yanks.nvim" }
+  use { 'tpope/vim-endwise' }
+  use { 'MaxMEllon/vim-jsx-pretty' }
+  use { 'neoclide/vim-jsx-improve' }
+  use { "NickyTope/yanks.nvim" }
+  use { 'folke/trouble.nvim' }
+  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
+  use { 'anuvyklack/pretty-fold.nvim' }
+  use { 'anuvyklack/fold-preview.nvim',
+    requires = 'anuvyklack/keymap-amend.nvim',
+  }
 
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
   if is_bootstrap then
     require('packer').sync()
   end
@@ -130,3 +146,5 @@ require("bufdelete_rc")
 require("autopairs_rc")
 require("autotag_rc")
 require("bufferline_rc")
+require("trouble_rc")
+require("pretty_fold_rc")
