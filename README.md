@@ -2,9 +2,9 @@
 
 # Requirements
 
-solargraph
+###solargraph
 `brew install solargraph`
 
-fzf
-brew install fzf
+###fzf
+`brew install fzf`
 
