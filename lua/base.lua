@@ -12,12 +12,14 @@ vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
+vim.o.clipboard = "unnamedplus"
 vim.opt.wildignore:append { '*/node_modules/*' }
 -- Make line numbers default
 vim.wo.number = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
+vim.o.scrolloff = 8 -- Number of lines to keep above and below the cursor
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -29,10 +31,12 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+vim.o.lazyredraw = true -- lazily redraw screen
 -- Decrease update time
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
+vim.o.swapfile = false -- Disable use of swapfile for the buffer
 -- Set colorscheme
 vim.o.termguicolors = true
 

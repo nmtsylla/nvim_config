@@ -28,6 +28,27 @@ require("packer").init {
 require('packer').startup(function(use)
   use 'lewis6991/impatient.nvim'
   use 'wbthomason/packer.nvim' -- Package manager
+
+  ------# UI packages ------
+
+  use 'mjlbach/onedark.nvim' -- Theme inspired by Atom
+  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+  use 'kyazdani42/nvim-web-devicons'
+
+  use { 'kaicataldo/material.vim' }
+  use { "j-hui/fidget.nvim" }
+  use { 'akinsho/bufferline.nvim' }
+  use { 'RRethy/vim-illuminate' }
+  use { 'rcarriga/nvim-notify' }
+  use {
+    'declancm/cinnamon.nvim',
+    config = function() require('cinnamon').setup() end
+  }
+  use { 'stevearc/dressing.nvim' }
+  use { 'matbme/JABS.nvim' }
+  ------# UI Packages ------
+
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Add git related info in the signs columns and popups
@@ -42,12 +63,11 @@ require('packer').startup(function(use)
   use { 'hrsh7th/cmp-path' }
   use { 'hrsh7th/cmp-cmdline' }
   use { 'hrsh7th/nvim-cmp' }
+  use { "rafamadriz/friendly-snippets" }
   use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } } -- Snippet Engine and Snippet Expansion
-  use 'mjlbach/onedark.nvim' -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
+
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
-  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Fuzzy Finder (files, lsp, etc)
+  use { 'nvim-telescope/telescope.nvim', wants = "friendly-snippets", requires = { 'nvim-lua/plenary.nvim' } } -- Fuzzy Finder (files, lsp, etc)
 
   -- undo history
   use 'mbbill/undotree'
@@ -58,7 +78,7 @@ require('packer').startup(function(use)
   use 'famiu/bufdelete.nvim'
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
-
+  use { 'nvim-telescope/telescope-file-browser.nvim' }
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
@@ -66,13 +86,10 @@ require('packer').startup(function(use)
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
-  use 'kyazdani42/nvim-web-devicons'
   use { 'mhartington/formatter.nvim' }
   use { 'jose-elias-alvarez/null-ls.nvim' }
-  use { "j-hui/fidget.nvim" }
   use { 'windwp/nvim-autopairs' }
   use { 'windwp/nvim-ts-autotag' }
-  use { 'kaicataldo/material.vim' }
   use {
     "ThePrimeagen/refactoring.nvim",
     requires = {
@@ -80,12 +97,12 @@ require('packer').startup(function(use)
       { "nvim-treesitter/nvim-treesitter" }
     }
   }
-  use { 'akinsho/bufferline.nvim' }
-  use { 'RRethy/vim-illuminate' }
-  use { 'rcarriga/nvim-notify' }
+
   use { 'hrsh7th/vim-vsnip' }
   use { 'tpope/vim-rails' }
+  use { 'vim-ruby/vim-ruby' }
   use { 'tpope/vim-endwise' }
+  use { 'AndrewRadev/splitjoin.vim' }
   use { 'MaxMEllon/vim-jsx-pretty' }
   use { 'neoclide/vim-jsx-improve' }
   use { "NickyTope/yanks.nvim" }
@@ -97,6 +114,8 @@ require('packer').startup(function(use)
     requires = 'anuvyklack/keymap-amend.nvim',
   }
 
+  use { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" }
+  use { "Shatur/neovim-session-manager" }
   use {
     "folke/which-key.nvim",
     config = function()
@@ -115,18 +134,6 @@ end)
 
 require('impatient')
 require("base")
-
---
--- -- You'll need to restart nvim, and then it will work.
--- -- Automatically source and re-compile packer whenever you save this init.lua
-local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  command = 'source <afile> | PackerCompile',
-  group = packer_group,
-  pattern = vim.fn.expand '$MYVIMRC',
-})
-
-
 require("lualine_rc")
 require("base_mapping")
 require('comment_rc')
@@ -141,10 +148,23 @@ require("nvim_tree_rc")
 require("luasnip_rc")
 require("formatter_rc")
 require("null_ls_rc")
--- require("refactoring_rc")
+require("refactoring_rc")
 require("bufdelete_rc")
 require("autopairs_rc")
 require("autotag_rc")
 require("bufferline_rc")
 require("trouble_rc")
 require("pretty_fold_rc")
+require("session_manager_rc")
+require("dressing_rc")
+require("jabs_rc")
+-- require("illuminate_rc")
+--
+-- -- You'll need to restart nvim, and then it will work.
+-- -- Automatically source and re-compile packer whenever you save this init.lua
+local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePost', {
+  command = 'source <afile> | PackerCompile',
+  group = packer_group,
+  pattern = vim.fn.expand '$MYVIMRC',
+})

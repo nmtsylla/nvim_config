@@ -15,7 +15,6 @@ local on_attach = function(client, bufnr)
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.
   -- vim.api.nvim_buf_set_option(0, "formatexpr", "v:lua.vim.lsp.formatexpr()")
-  require("illuminate_rc").setup(client)
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc

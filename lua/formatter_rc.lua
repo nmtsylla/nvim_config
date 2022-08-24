@@ -100,4 +100,4 @@ require("formatter").setup {
 }
 
 -- Format file before saving
-vim.keymap.set('n', '<c-s>', ':Format<cr> <cmd>w!<cr>')
+vim.keymap.set('n', '<S-F>', ':Format<cr>')

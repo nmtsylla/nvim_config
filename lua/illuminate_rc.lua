@@ -39,3 +39,4 @@ function M.setup(client)
 end
 
 return M
+
