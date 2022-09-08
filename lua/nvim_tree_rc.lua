@@ -6,13 +6,13 @@ if not status_ok then
 end
 nvim_tree.setup {
   --
-  -- open_on_setup = true,
-  -- open_on_setup_file = true,
-  -- open_on_tab = true,
-  -- disable_netrw = true,
+  open_on_setup = false,
+  open_on_setup_file = false,
+  open_on_tab = false,
+  disable_netrw = false,
   update_focused_file = {
     enable = true,
-    update_cwd = true,
+    update_cwd = false,
   },
   -- hijack_cursor = true,
   view = {

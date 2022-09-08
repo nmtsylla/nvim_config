@@ -1,1 +1,1 @@
-vim.keymap.set('n', '<leader>c', ':Bdelete<cr>')
+vim.keymap.set('n', '<leader>k', ':Bdelete<cr>')

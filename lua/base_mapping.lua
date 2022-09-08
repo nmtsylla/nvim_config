@@ -33,7 +33,7 @@ vim.keymap.set('v', '<C-S-K>', ":m '<-2<CR>gv=gv", {noremap = true, silent = tru
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+-- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 vim.keymap.set("n", "<leader>pc", "<cmd>PackerCompile<cr>")
@@ -41,3 +41,5 @@ vim.keymap.set("n", "<leader>pi", "<cmd>PackerInstall<cr>")
 vim.keymap.set("n", "<leader>ps", "<cmd>PackerSync<cr>")
 vim.keymap.set("n", "<leader>pu", "<cmd>PackerUpdate<cr>")
 
+-- clear search highlight
+vim.keymap.set('n', '<esc>', ":noh<CR>", {noremap = false, silent = true})

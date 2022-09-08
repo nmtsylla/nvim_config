@@ -71,7 +71,7 @@ require('packer').startup(function(use)
 
   -- undo history
   use 'mbbill/undotree'
-
+  use 'glepnir/dashboard-nvim'
   use 'voldikss/vim-floaterm'
   use 'tpope/vim-surround'
   use 'tpope/vim-commentary'
@@ -158,6 +158,7 @@ require("pretty_fold_rc")
 require("session_manager_rc")
 require("dressing_rc")
 require("jabs_rc")
+require("dashboard_rc")
 -- require("illuminate_rc")
 --
 -- -- You'll need to restart nvim, and then it will work.
