@@ -79,12 +79,20 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
   use { 'nvim-telescope/telescope-file-browser.nvim' }
+  -- use {
+  --   'kyazdani42/nvim-tree.lua',
+  --   requires = {
+  --     'kyazdani42/nvim-web-devicons', -- optional, for file icons
+  --   },
+  -- }
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icons
-    },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = { 
+      "nvim-lua/plenary.nvim",
+      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
   }
   use { 'mhartington/formatter.nvim' }
   use { 'jose-elias-alvarez/null-ls.nvim' }
@@ -144,7 +152,8 @@ require("treesitter_rc")
 require("lsp_rc")
 require("cmp_rc")
 require("floatterm_rc")
-require("nvim_tree_rc")
+-- require("nvim_tree_rc")
+require("neotree_rc")
 require("luasnip_rc")
 require("formatter_rc")
 require("null_ls_rc")
@@ -158,7 +167,7 @@ require("pretty_fold_rc")
 require("session_manager_rc")
 require("dressing_rc")
 require("jabs_rc")
-require("dashboard_rc")
+--require("dashboard_rc")
 -- require("illuminate_rc")
 --
 -- -- You'll need to restart nvim, and then it will work.
