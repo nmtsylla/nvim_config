@@ -51,12 +51,12 @@ local on_attach = function(client, bufnr)
 end
 
 -- nvim-cmp supports additional completion capabilities
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.foldingRange = {
+--  dynamicRegistration = false,
+--   lineFoldingOnly = true,
+-- }
 -- Enable the following language servers
 local servers = { 'clangd', 'solargraph', 'pyright', 'tsserver', 'sumneko_lua', 'html' }
 

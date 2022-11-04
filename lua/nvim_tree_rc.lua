@@ -84,7 +84,7 @@ nvim_tree.setup {
 }
 
 -- Toggle nvim tree
-vim.keymap.set('n', '<leader>/', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '\\', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 -- Navigate through windows
 vim.keymap.set('n', '<Space>', '<C-w>w')
 vim.keymap.set('n', '<Space>', '<C-w>w')

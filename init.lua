@@ -85,16 +85,23 @@ require('packer').startup(function(use)
   --     'kyazdani42/nvim-web-devicons', -- optional, for file icons
   --   },
   -- }
+  -- use {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   branch = "v2.x",
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --     "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+  --     "MunifTanjim/nui.nvim",
+  --   }
+  -- }
   use {
-  "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = { 
-      "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
-  use { 'mhartington/formatter.nvim' }
+  -- use { 'mhartington/formatter.nvim' }
   use { 'jose-elias-alvarez/null-ls.nvim' }
   use { 'windwp/nvim-autopairs' }
   use { 'windwp/nvim-ts-autotag' }
@@ -152,10 +159,10 @@ require("treesitter_rc")
 require("lsp_rc")
 require("cmp_rc")
 require("floatterm_rc")
--- require("nvim_tree_rc")
-require("neotree_rc")
+require("nvim_tree_rc")
+-- require("neotree_rc")
 require("luasnip_rc")
-require("formatter_rc")
+-- require("formatter_rc")
 require("null_ls_rc")
 require("refactoring_rc")
 require("bufdelete_rc")
@@ -178,3 +185,5 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   group = packer_group,
   pattern = vim.fn.expand '$MYVIMRC',
 })
+-- auto format file on save
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
